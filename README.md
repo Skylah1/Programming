@@ -1,2 +1,3 @@
 # Programming
-practice programming
+
+Hi, I'm S.
