@@ -42,33 +42,46 @@ void map(void) {
 	printf("   ㅣ            ㅣ           ㅣ             |             |            ㅣ           |             │\n");
 	printf("   ㅁㅡㅡㅡㅡㅡㅡㅁㅡㅡㅡㅡㅡㅡㅁㅡㅡㅡㅡㅡㅡㅁㅡㅡㅡㅡㅡㅡㅁㅡㅡㅡㅡㅡㅡㅁㅡㅡㅡㅡㅡㅡㅁㅡㅡㅡㅡㅡㅡㅁ\n");
 
-//지역 
-void insertZone(zone_head* Z, char* name, int num, int X, int Y)
-{
 
+
+
+
+
+
+
+
+//지역 함수
+#define MAX_LOCAL 26//지역 갯수
+
+typedef struct{	//지역 정보 구조체 선언
+	char localname[50];	//지역 이름
+	//int price[4];	//월세,전세,자가,빌딩
+	//int level;		//발전도 0=월세, 1= 전세, 2= 자가, 3=빌딩
+	char localowner[50]; //지역 소유자 이름
+	int x[2];		//x좌표	(말 위치)
+	int y[2];		//y좌표	(말 위치)
+}Local_info;
+
+Local_info 
+{
 }
 
-//말 옮기기 함수
-void Move_player(player* player, int turn);
 
-void Move_player(player* player, int turn)
+
+
+//player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
+void gotoxy(int x, int y)
 {
-	//plyer
-	//gotoxy(player->here_X +(3*turn)-2 ,player->here_Y);
-		printf("  ");
- 	//gotoxy(player->next_X +(3*turn)-2, player->next_Y);
-	
-	for(int i=0;i<6;i++)
-	{
-		//player->here_X = player->next_X;
-		//player->here_Y = player->next_Y;
-		MOVING_init(player,turn);
-		
-		//player가 turn하여 start로 돌아왔을 때
-	}
-
+	COORD Cur;
+	Cur.X = x;
+	Cur.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 }
 
+//player 옮기기 함수
+void Move_player(int a)
+{
+}
 
 
 
