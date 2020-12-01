@@ -89,7 +89,7 @@ typedef struct{	//땅 정보 구조체 선언
 
 
 //땅 정보 초기화 - 구조체 배열 사용
-Local_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    	  건물좌표
+Land_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    	  건물좌표
 	{"출발",	{0,0}, 0,"없음",		{86,94},{40,40}, 85, 38},			//0		 86 40		  94 40		     85 38
 	{"대구",	{,},0,"없음",		{72,80},{40,40}, 71, 38},		  	//1		 72 40		  80 40		     71 38
 	{"세종",	{,},0,"없음",		{58,66},{40,40},57, 38},  			//2		 58 40		  66 40       	     57 38
@@ -136,17 +136,6 @@ Local_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    
 
 
 
-
-
-
-//player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
-void gotoxy(int x, int y)
-{
-	COORD Cur;
-	Cur.X = x;
-	Cur.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
-}
 
 //player 옮기기 함수
 void Move_player(int n)
