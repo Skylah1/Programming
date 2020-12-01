@@ -64,7 +64,7 @@ void gotoxy(int x, int y)
  typedef struct
  {
 	char name[50];		//플레이어 이름
-	int money;		//플레이어 보유금()
+	int money;		//플레이어 보유금(자산)
 	int pos;		//플레이어 위치
 	char icon[4];		//플레이어 아이콘
 }Player_info;
@@ -79,8 +79,8 @@ Player_info p[4] = {{"Player1", 10000000, 0, "★"}, {"Player2", 10000000, 0, "�
 
 typedef struct{	//땅 정보 구조체 선언
 	char landname[50];	//땅 이름
-	//int case[2];		//자기소유,건물
-	//int case_num;		//0=자기소유, 1=건물
+	//int case[2];		//건물, 자기소유
+	//int case_num;		//0=건물, 1=자기소유
 	char landowner[50]; //땅 소유자 이름
 	int x[2];		//x좌표(player 위치)
 	int y[2];		//y좌표(player 위치)
@@ -127,23 +127,16 @@ Local_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    
 	//play1은 0
 	gotoxy(86,40);
 	printf("%s",p[0].icon);
-	gotoxy();
-	printf("%s",p[0].name;
-	gotoxy();
-	pritf("보유금 : %d", p[0].money);
-	gotoxy();
-	printf("지역 : ");
 	
 	//play2는 1
 	gotoxy(94,40);
-	printf("%s",p[1].icon);
-	gotoxy();
-	printf("%s",p[1].name;
-	gotoxy();
-	pritf("보유금 : %d", p[1].money);
-	gotoxy();
-	printf("지역 : ");
+	printf("%s",p[1].icon);	
 }
+
+
+
+
+
 
 
 //player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
@@ -156,24 +149,14 @@ void gotoxy(int x, int y)
 }
 
 //player 옮기기 함수
-void Move_player(int a)
+void Move_player(int n)
 {
-	gotoxy(PULPLE[p[a].pos].x[a],PULPLE[p[a].pos].y[a]);
-	if (a==0)
-		printf("%s", p[a].icon);	//player1의 아이콘 출력
-	else if (a==1)
-		printf("%s", p[a].icon);	//player2의 아이콘 출력
+	gotoxy(PULPLE[p[n].pos].x[n],PULPLE[p[n].pos].y[n]);
+	if (n==0)
+		printf("%s", p[n].icon);	//player1의 아이콘 출력
+	else if (n==1)
+		printf("%s", p[n].icon);	//player2의 아이콘 출력
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -195,18 +178,6 @@ int Dice()
  
  
  
- //플레이어 정보 입력 함수
- //플레이어 정보 구조체 선언
- typedef struct
- {
-	char name[50];		//플레이어 이름
-	int money;		//플레이어 보유금
-	int pos;		//플레이어 위치
-	char icon[4];		//플레이어 아이콘
-}Player_info;
-
-Player_info p[4] = {{"Player1", 10000000, 0, "★"}, {"Player2", 10000000, 0, "♥"}, {"Player3", 10000000, 0, "▣"}, {"Player4", 10000000, 0, "◈"} };//1~4p 초기화
-
 
  
  //건물 짓기 함수
