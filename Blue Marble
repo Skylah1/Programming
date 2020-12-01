@@ -69,7 +69,7 @@ void gotoxy(int x, int y)
 	char icon[4];		//플레이어 아이콘
 }Player_info;
 
-Player_info p[4] = {{"Player1", 10000000, 0, "★"}, {"Player2", 10000000, 0, "♥"}, {"Player3", 10000000, 0, "▣"}, {"Player4", 10000000, 0, "◈"} };//1~4p 초기화
+Player_info p[4] = {{"Player1", 10000000, 0, "▣"}, {"Player2", 10000000, 0, "♥"}};//player1, player2 초기화
 
 
 
