@@ -48,6 +48,29 @@ void map(void) {
 
 
 
+//player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
+void gotoxy(int x, int y)
+{
+	COORD Cur;
+	Cur.X = x;
+	Cur.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+}
+
+
+
+ //플레이어 정보 입력 함수
+ //플레이어 정보 구조체 선언
+ typedef struct
+ {
+	char name[50];		//플레이어 이름
+	int money;		//플레이어 보유금()
+	int pos;		//플레이어 위치
+	char icon[4];		//플레이어 아이콘
+}Player_info;
+
+Player_info p[4] = {{"Player1", 10000000, 0, "★"}, {"Player2", 10000000, 0, "♥"}, {"Player3", 10000000, 0, "▣"}, {"Player4", 10000000, 0, "◈"} };//1~4p 초기화
+
 
 
 //땅 함수
@@ -65,7 +88,7 @@ typedef struct{	//땅 정보 구조체 선언
 
 
 
-//땅 정보 초기화(구조체 배열)
+//땅 정보 초기화 - 구조체 배열 사용
 Local_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    	  건물좌표
 	{"출발",	{0,0}, 0,"없음",		{86,94},{40,40}, 85, 38},			//0		 86 40		  94 40		     85 38
 	{"대구",	{,},0,"없음",		{72,80},{40,40}, 71, 38},		  	//1		 72 40		  80 40		     71 38
@@ -99,8 +122,28 @@ Local_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    
 
 
 
-
-
+//player 초기화 함수
+{
+	//play1은 0
+	gotoxy(86,40);
+	printf("%s",p[0].icon);
+	gotoxy();
+	printf("%s",p[0].name;
+	gotoxy();
+	pritf("보유금 : %d", p[0].money);
+	gotoxy();
+	printf("지역 : ");
+	
+	//play2는 1
+	gotoxy(94,40);
+	printf("%s",p[1].icon);
+	gotoxy();
+	printf("%s",p[1].name;
+	gotoxy();
+	pritf("보유금 : %d", p[1].money);
+	gotoxy();
+	printf("지역 : ");
+}
 
 
 //player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
@@ -115,7 +158,11 @@ void gotoxy(int x, int y)
 //player 옮기기 함수
 void Move_player(int a)
 {
-
+	gotoxy(PULPLE[p[a].pos].x[a],PULPLE[p[a].pos].y[a]);
+	if (a==0)
+		printf("%s", p[a].icon);	//player1의 아이콘 출력
+	else if (a==1)
+		printf("%s", p[a].icon);	//player2의 아이콘 출력
 }
 
 
