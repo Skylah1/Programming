@@ -46,9 +46,9 @@ void Move_player(player* player, int turn);
 void Move_player(player* player, int turn)
 {
 	//plyer
-	//goxy(player->here_X +(3*turn)-2 ,player->here_Y);
+	//gotoxy(player->here_X +(3*turn)-2 ,player->here_Y);
 		printf("  ");
- 	//goxy(player->next_X +(3*turn)-2, player->next_Y);
+ 	//gotoxy(player->next_X +(3*turn)-2, player->next_Y);
 	
 	for(int i=0;i<6;i++)
 	{
