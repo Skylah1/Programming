@@ -48,28 +48,6 @@ void map(void) {
 
 
 
-//player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
-void gotoxy(int x, int y)
-{
-	COORD Cur;
-	Cur.X = x;
-	Cur.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
-}
-
-
-
- //플레이어 정보 입력 함수
- //플레이어 정보 구조체 선언
- typedef struct
- {
-	char name[50];		//플레이어 이름
-	int money;		//플레이어 보유금(자산)
-	int pos;		//플레이어 위치
-	char icon[4];		//플레이어 아이콘
-}Player_info;
-
-Player_info p[4] = {{"Player1", 10000000, 0, "▣"}, {"Player2", 10000000, 0, "♥"}};//player1, player2 초기화
 
 
 
@@ -123,7 +101,8 @@ Land_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    	
 
 
 
-//player 초기화 함수
+
+void Begi()//player 초기화 함수
 {
 	//play1은 0
 	gotoxy(86,40);
@@ -135,6 +114,29 @@ Land_info PURPLE[MAX_CITY] = {								    번호		   1p좌표   	  2p좌표    	
 }
 
 
+
+//player를 옮기기 위한 좌표설정 함수 - #include <windows.h> 사용하여 좌표이동 함수 사용
+void gotoxy(int x, int y)
+{
+	COORD Cur;
+	Cur.X = x;
+	Cur.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+}
+
+
+
+ //플레이어 정보 입력 함수
+ //플레이어 정보 구조체 선언
+ typedef struct
+ {
+	char name[10];		//플레이어 이름
+	int money;		//플레이어 보유금(자산)
+	int pos;		//플레이어 위치
+	char icon[2];		//플레이어 아이콘
+}Player_info;
+
+Player_info p[2] = {{"Player1", 10000000, 0, "▣"}, {"Player2", 10000000, 0, "♥"}};//player1, player2 초기화
 
 
 
@@ -157,9 +159,11 @@ void Move_player(int n)
 int Dice()
 {
  srand(time(NULL));//랜덤
- int n=rand()%6+1;//1~6 사이 난수 생성
- return n;
+ int a=rand()%6+1;
+ return a;
  }
+ 
+ 
  
  
  //미니 게임 함수
@@ -172,7 +176,18 @@ int Dice()
  
  //건물 짓기 함수
  
- 
+ else {
+			gotoxy(14, 26);
+			printf("건물을 세우시겠습니까?");
+			gotoxy(14, 27);
+			printf("[가격] %d원", Green[p[n].pos].price[3]);
+			if (Answer(a)) {
+				strcpy(Green[p[n].pos].owner, p[n].name);
+				Build(a);
+				Green[p[a].pos].level++;
+				p[a].money -= Green[p[n].pos].price[3];
+			}
+		}
  
  
  
