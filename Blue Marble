@@ -183,6 +183,7 @@ void make_Building(int n)
 
 
  //땅 구매
+ //첫 번째 ■에 색을 입히는 방법을 모르겠습니다...
  void Build(int a)
  {
  	int ans;
@@ -193,7 +194,7 @@ void make_Building(int n)
 	if (ans==0)
 	{
 		gotoxy(land[p[a].pos].lx, land[p[a].pos].ly);
-		for (int i = 0; i <= land[p[a].pos].cases; i++)
+		for (int i = 1; i = land[p[a].pos].cases; i++)
 		{
 			if (a == 0)
 				RED;
@@ -210,31 +211,16 @@ void make_Building(int n)
 
 
 
-//땅 구매
-
-
-
-
-
-
-
-
-
 
 //땅 인수
 void Mna(int a) {	
 	WINE;
-	if (p[a].money >= Green[p[a].pos].price[Green[p[a].pos].level]) {
+	if (p[a].money >= Green[p[a].pos].price[Green[p[a].pos].level])
+	{
+	
 		gotoxy(14, 26);
-		printf("                                  ");
+		printf("땅 [%s] 인수가 가능합니다. 인수하시겠습니까? (Yes : 0 또는 NO : 1) > ", land[p[a].pos].name);
 		gotoxy(14, 27);
-		printf("                                  ");
-		gotoxy(14, 28);
-		printf("                                  ");
-		gotoxy(14, 26);
-		printf("[%s]을/를 인수할 수 있습니다!", Green[p[a].pos].name);
-		gotoxy(14, 27);
-		printf("[%s]을/를 인수하시겠습니까?", Green[p[a].pos].name);
 		if (Answer(a))//예 누를시
 		{								
 			strcpy(Green[p[a].pos].owner, p[a].name);
