@@ -174,7 +174,7 @@ void make_Building(int n)
 		printf("건물을 몇 채 세우시겠습니까? (최대 3채 가능) > ");
 		scanf_s("%d", &bui);
 		strcpy(land[p[n].pos].landowner, p[n].landname);
-		
+		//gotoxy(,);	//땅 이름 위에 ■를 출력하는 방법..?
 		for (bui=0;bui<=3;bui++)
 		{
 			printf("■");
