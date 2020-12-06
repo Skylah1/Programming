@@ -176,7 +176,11 @@ void make_Building(int n)
 		strcpy(land[p[n].pos].landowner, p[n].landname);
 		
 		for (bui=0;bui<=3;bui++)
-		     printf("■");
+		{
+			printf("■");
+		}
+		
+		p[a].money -= land[p[a].pos].price[0];
 	}
 }
 
@@ -184,10 +188,10 @@ void make_Building(int n)
 
  //땅 구매
  //첫 번째 ■에 색을 입히는 방법을 모르겠습니다...
- void Build(int a)
+ void buy_Land(int a)
  {
  	int ans;
- 	gotoxy(18, 10);
+ 	gotoxy(15, 13);
 	printf("땅 [%s]을/를 구매하시겠습니까? (Yes : 0 또는 NO : 1) > ", land[p[a].pos].name);
 	scanf_s("%d", &ans);
 	
@@ -202,6 +206,7 @@ void make_Building(int n)
 			if (a == 1)
 				GREEN;
 		}
+		p[a].money -= land[p[a].pos].price[1];
 	}
 }
 
@@ -213,27 +218,39 @@ void make_Building(int n)
 
 
 //땅 인수
-void Mna(int a) {	
+void takeover_Land(int a) {	
 	WINE;
-	if (p[a].money >= Green[p[a].pos].price[Green[p[a].pos].level])
+	int ans;
+	if (p[a].money >= land[p[a].pos].price[land[p[a].pos].cases])
 	{
-	
-		gotoxy(14, 26);
+		gotoxy(15, 15);
 		printf("땅 [%s] 인수가 가능합니다. 인수하시겠습니까? (Yes : 0 또는 NO : 1) > ", land[p[a].pos].name);
-		gotoxy(14, 27);
-		if (Answer(a))//예 누를시
+		scanf_s("%d", &ans);
+		if (ans==0)
 		{								
-			strcpy(Green[p[a].pos].owner, p[a].name);
-			Build(a);
+			strcpy(land[p[a].pos].landowner, p[a].landname);
+			
+			gotoxy(land[p[a].pos].lx, land[p[a].pos].ly);
+			for (int i = 1; i = land[p[a].pos].cases; i++)
+			{
+				if (a == 0)
+					RED;
+
+				if (a == 1)
+					GREEN;
+			}
+			
 			if (a == 0)
 			{
-				p[a + 1].money += Green[p[a].pos].price[Green[p[a].pos].level];
-				p[a].money -= Green[p[a].pos].price[Green[p[a].pos].level];
+				//땅 소유자가 p[1]일 경우
+				p[a + 1].money += land[p[a].pos].price[land[p[a].pos].cases];
+				p[a].money -= land[p[a].pos].price[land[p[a].pos].cases];
 			}
 			else
 			{
-				p[a - 1].money += Green[p[a].pos].price[Green[p[a].pos].level];
-				p[a].money -= Green[p[a].pos].price[Green[p[a].pos].level];
+				//땅 소유자가 p[0]일 경우
+				p[a - 1].money += land[p[a].pos].price[land[p[a].pos].cases];
+				p[a].money -= land[p[a].pos].price[land[p[a].pos].cases];
 			}
 		}
 	}
