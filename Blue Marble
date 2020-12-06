@@ -52,9 +52,15 @@ typedef struct{	//땅 정보 구조체 선언
 	char landname[10];	//땅 이름
 	int price[2];		//건물 건설 금액, 땅 구매 금액
 	int cases;		//0=건물 건설, 1= 땅 구매
-	char landowner[10]; //땅 소유자 이름
+	char landowner[10]; 	//땅 소유자 이름
 	int x[2];		//x좌표(player 위치)
 	int y[2];		//y좌표(player 위치)
+	int bx1;		//건물x1좌표
+	int by1;		//건물y1좌표
+	int bx2;		//건물x2좌표
+	int by2;		//건물y2좌표
+	int bx3;		//건물x3좌표
+	int by3;		//건물y3좌표
 	int lx;//땅 구매
 	int ly;//땅 구매
 }Land_info;
@@ -172,12 +178,32 @@ void Build(int a) {	//건물 구입시 표시
 		printf("■");
 	}
 } 
+
+
+
+else
+{
+	gotoxy(14, 26);
+	printf("빌딩을 건설하시겠습니까?");
+	gotoxy(14, 27);
+	printf("      <가격 : %d원>", Green[p[a].pos].price[3]);
+	if (Answer(a)) 
+	{
+		strcpy(Green[p[a].pos].owner, p[a].name);
+		Build(a);
+		Green[p[a].pos].level++;
+		p[a].money -= Green[p[a].pos].price[3];
+	}
+}
+ 
+ 
+ 
  
  
 //건물 짓기
 void make_Building(int n)
 {
-	int ans,bui;
+	int ans, bui;
 	gotoxy(18, 10);
 	printf("[가격] %d원", land[p[n].pos].price[0]);
 	gotoxy(15, 11);
@@ -189,14 +215,557 @@ void make_Building(int n)
 		printf("건물을 몇 채 세우시겠습니까? (최대 3채까지 가능합니다.) > ");
 		scanf_s("%d", &bui);
 		//strcpy(land[p[n].pos].landowner, p[n].landname);	//필요 없을 것 같다.
-		//gotoxy(,);	//땅 이름 위에 ■를 출력하는 방법..?
+		
 		
 		int c;
 		switch (c)
 		{
 		case 1: 
-		
-		
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 2:
+			if (bui==1)
+				gotoxy(52, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+				gotoxy(56, 29);
+				printf("■");
+			}
+			break;
+		case 3:
+			if (bui==1)
+				gotoxy(52, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+				gotoxy(56, 29);
+				printf("■");
+			}
+			break;
+		case 4:
+			if (bui==1)
+				gotoxy(52, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+				gotoxy(56, 29);
+				printf("■");
+			}
+			break;
+		case 5:
+			if (bui==1)
+				gotoxy(52, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(52, 29);
+				printf("■");
+				gotoxy(54, 29);
+				printf("■");
+				gotoxy(56, 29);
+				printf("■");
+			}
+			break;
+		case 6:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 7:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 8:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 9:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 10:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 11:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 12:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 13:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 14:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 15:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 16:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 17:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 18:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 19:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 20:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 21:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 22:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 23:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 24:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 25:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
+		case 26:
+			if (bui==1)
+				gotoxy(64, 29);
+				printf("■");
+			else if (bui==2)
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+			}
+			else
+			{
+				gotoxy(64, 29);
+				printf("■");
+				gotoxy(66, 29);
+				printf("■");
+				gotoxy(68, 29);
+				printf("■");
+			}
+			break;
 		
 		}
 		
