@@ -214,13 +214,17 @@ void make_Building(int n)
 		gotoxy(15, 12);
 		printf("건물을 몇 채 세우시겠습니까? (최대 3채까지 가능합니다.) > ");
 		scanf_s("%d", &bui);
-		//strcpy(land[p[n].pos].landowner, p[n].landname);	//필요 없을 것 같다.
-		
-		
+		strcpy(land[p[n].pos].landowner, land[n].name);		
 		int c;
+		//c=gotoxy(land[p[a].pos].lx, land[p[a].pos].ly);
+		gotoxy(15, 12);
+		printf("1.대구 2.세종 3.인천 4.부산 5.서울 6.도박 7.병천 8.논산 9.속초 10.안동 11.원주\n12.여수 13.경주 14.전주 15.수원 16.광주 17.독도 18.청주 19.대전 20.용인 21.포항 22.성남\;n"};
+		gotoxy(15, 14);
+		printf("지역에 해당하는 번호를 입력해주세요. > ");
+		scanf_s("%d",&c);
 		switch (c)
 		{
-		case 1: 
+		case 1:
 			if (bui==1)
 				gotoxy(64, 29);
 				printf("■");
@@ -258,7 +262,7 @@ void make_Building(int n)
 				printf("■");
 				gotoxy(54, 29);
 				printf("■");
-				gotoxy(56, 29);
+				gotoxswy(56, 29);
 				printf("■");
 			}
 			break;
@@ -685,17 +689,9 @@ void make_Building(int n)
 		
 		}
 		
-		
-		
-		for (bui=0;bui<=3;bui++)
-		{
-			printf("■");
-		}
-		
 		p[a].money -= land[p[a].pos].price[0];
 	}
 }
-
 
 
 
@@ -707,35 +703,9 @@ void make_Building(int n)
 
 
 
- //건물 짓기
-void make_Building(int n)
-{
-	int ans,bui;
-	gotoxy(18, 10);
-	printf("[가격] %d원", land[p[n].pos].price[0]);
-	gotoxy(15, 11);
-	printf("건물을 세우시겠습니까? (Yes : 0 or No : 1) >");
-	scanf_s("%d", &ans);
-	if (ans==0)
-	{
-		gotoxy(15, 12);
-		printf("건물을 몇 채 세우시겠습니까? (최대 3채까지 가능합니다.) > ");
-		scanf_s("%d", &bui);
-		strcpy(land[p[n].pos].landowner, p[n].landname);
-		//gotoxy(,);	//땅 이름 위에 ■를 출력하는 방법..?
-		for (bui=0;bui<=3;bui++)
-		{
-			printf("■");
-		}
-		
-		p[a].money -= land[p[a].pos].price[0];
-	}
-}
-
 
 
  //땅 구매
- //첫 번째 ■에 색을 입히는 방법을 모르겠습니다...
  void buy_Land(int a)
  {
  	int ans;
@@ -745,8 +715,9 @@ void make_Building(int n)
 	if (ans==0)
 	{
 		gotoxy(land[p[a].pos].lx, land[p[a].pos].ly);
-		for (int i = 1; i = land[p[a].pos].cases; i++)
+		if (land[p[a].pos].cases==1)
 		{
+			gotoxy(land[p[a].pos].bx1, land[p[a].pos].by1);
 			if (a == 0)
 				RED;
 
