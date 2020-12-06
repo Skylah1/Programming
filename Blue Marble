@@ -158,21 +158,24 @@ int Dice()
  
  
 
- 
+
  //건물 짓기 함수
 void make_Building(int n)
 {
-	int ans;
-	gotoxy(15, 10);
-	printf("건물을 세우시겠습니까? (Yes : 0 or No : 1)");
-	//gotoxy(15, 11);
+	int ans,bui;
+	gotoxy(18, 10);
 	printf("[가격] %d원", land[p[n].pos].price[0]);
-	gotoxy(16, 10);
+	gotoxy(15, 11);
+	printf("건물을 세우시겠습니까? (Yes : 0 or No : 1) >");
 	scanf_s("%d", &ans);
+	gotoxy(15, 12);
+	printf("건물을 몇 채 세우시겠습니까? (최대 3채 가능) > ");
+	scanf_s("%d", &bui);
 	if (ans==0)
 	{
 		strcpy(land[p[n].pos].landowner, p[n].landname);
-		printf("▮");
+		for (bui=0;bui<=3;bui++)
+		     printf("▮");
 	}
 }
 
