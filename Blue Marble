@@ -50,13 +50,13 @@ void map(void) {
 
 typedef struct{	//땅 정보 구조체 선언
 	char landname[10];	//땅 이름
-	int price[2];		//건물, 자기소유
-	int case;		//0=건물, 1=자기소유
+	int price[2];		//건물 건설 금액, 땅 구매 금액
+	int cases;		//0=건물 건설, 1= 땅 구매
 	char landowner[10]; //땅 소유자 이름
 	int x[2];		//x좌표(player 위치)
 	int y[2];		//y좌표(player 위치)
-	int lx;//건물 구매
-	int ly;//
+	int lx;//땅 구매
+	int ly;//땅 구매
 }Land_info;
 
 
@@ -174,6 +174,7 @@ void make_Building(int n)
 		printf("건물을 몇 채 세우시겠습니까? (최대 3채 가능) > ");
 		scanf_s("%d", &bui);
 		strcpy(land[p[n].pos].landowner, p[n].landname);
+		
 		for (bui=0;bui<=3;bui++)
 		     printf("■");
 	}
@@ -181,16 +182,73 @@ void make_Building(int n)
 
 
 
- 
- void Build(int a) {	//건물 구매
-	gotoxy(Green[p[a].pos].lx, Green[p[a].pos].ly);
-	for (int i = 0; i <= Green[p[a].pos].level; i++) {
-		if (a == 0)	//색
-			BLOOD;
+ //땅 구매
+ void Build(int a)
+ {
+ 	int ans;
+ 	gotoxy(18, 10);
+	printf("땅 [%s]을/를 구매하시겠습니까? (Yes : 0 또는 NO : 1) > ", land[p[a].pos].name);
+	scanf_s("%d", &ans);
+	
+	if (ans==0)
+	{
+		gotoxy(land[p[a].pos].lx, land[p[a].pos].ly);
+		for (int i = 0; i <= land[p[a].pos].cases; i++)
+		{
+			if (a == 0)
+				RED;
 
-		if (a == 1)
-			SKY;
+			if (a == 1)
+				GREEN;
+		}
+	}
+}
 
-		printf("■");
+
+
+
+
+
+
+//땅 구매
+
+
+
+
+
+
+
+
+
+
+//땅 인수
+void Mna(int a) {	
+	WINE;
+	if (p[a].money >= Green[p[a].pos].price[Green[p[a].pos].level]) {
+		gotoxy(14, 26);
+		printf("                                  ");
+		gotoxy(14, 27);
+		printf("                                  ");
+		gotoxy(14, 28);
+		printf("                                  ");
+		gotoxy(14, 26);
+		printf("[%s]을/를 인수할 수 있습니다!", Green[p[a].pos].name);
+		gotoxy(14, 27);
+		printf("[%s]을/를 인수하시겠습니까?", Green[p[a].pos].name);
+		if (Answer(a))//예 누를시
+		{								
+			strcpy(Green[p[a].pos].owner, p[a].name);
+			Build(a);
+			if (a == 0)
+			{
+				p[a + 1].money += Green[p[a].pos].price[Green[p[a].pos].level];
+				p[a].money -= Green[p[a].pos].price[Green[p[a].pos].level];
+			}
+			else
+			{
+				p[a - 1].money += Green[p[a].pos].price[Green[p[a].pos].level];
+				p[a].money -= Green[p[a].pos].price[Green[p[a].pos].level];
+			}
+		}
 	}
 }
