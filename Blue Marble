@@ -55,14 +55,11 @@ typedef struct{	//땅 정보 구조체 선언
 	char landowner[10]; 	//땅 소유자 이름
 	int x[2];		//x좌표(player 위치)
 	int y[2];		//y좌표(player 위치)
-	int bx1;		//건물x1좌표
-	int by1;		//건물y1좌표
-	int bx2;		//건물x2좌표
-	int by2;		//건물y2좌표
-	int bx3;		//건물x3좌표
-	int by3;		//건물y3좌표
-	int lx;//땅 구매
-	int ly;//땅 구매
+	int lx;			//땅 구매
+	int ly;			//땅 구매
+	int b1[2];		//건물1 좌표
+	int b2[2];		//건물2 좌표
+	int b3[3];		//건물3 좌표
 }Land_info;
 
 
@@ -717,7 +714,8 @@ void make_Building(int n)
 		gotoxy(land[p[a].pos].lx, land[p[a].pos].ly);
 		if (land[p[a].pos].cases==1)
 		{
-			gotoxy(land[p[a].pos].bx1, land[p[a].pos].by1);
+			//gotoxy(land[p[a].pos].bx1, land[p[a].pos].by1);
+			gotoxy(land[p[a].pos].b1[a]);
 			if (a == 0)
 				RED;
 
