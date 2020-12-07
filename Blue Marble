@@ -698,14 +698,14 @@ void make_Building(int n)
  --------------------------------------------------------------------------------------------------------------------------------------
 
 
+void buy_Land(int a);
+void takeover_Land(int a);
 
-
-
+int ans;
 
  //땅 구매
  void buy_Land(int a)
  {
- 	int ans;
  	gotoxy(15, 13);
 	printf("땅 [%s]을/를 구매하시겠습니까? (Yes : 0 또는 NO : 1) > ", land[p[a].pos].name);
 	scanf_s("%d", &ans);
@@ -723,6 +723,11 @@ void make_Building(int n)
 				GREEN;
 		}
 		p[a].money -= land[p[a].pos].price[1];
+	}
+	else
+	{
+		gotoxy(15, 14);
+		printf("땅 [%s]을/를 구매하지 않으셨습니다.\n", land[p[a].pos].name);
 	}
 }
 
